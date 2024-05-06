@@ -1,0 +1,15 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  summoner: Summoner!
+}
+
+type Summoner {
+  accountId: String!
+  id: ID!
+  profileIconId: Int!
+  puuid: String!
+  summonerLevel: Int!
+}
