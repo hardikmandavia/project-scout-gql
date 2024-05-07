@@ -3,9 +3,10 @@ import { Injectable } from '@nestjs/common';
 import RiotAPI, { getUrl } from "../_riot-api";
 
 @Injectable()
-export class SummonerService {
-  async byPUUID(puuid: string) {
-    const url = getUrl('EUW1', `lol/summoner/v4/summoners/by-puuid/${puuid}`);
+export class AccountService {
+
+  async byRiotId(name: string, tag: string) {
+    const url = getUrl("europe", `riot/account/v1/accounts/by-riot-id/${name}/${tag}`);
     const request = new RiotAPI(url);
 
     const result = await request.get();

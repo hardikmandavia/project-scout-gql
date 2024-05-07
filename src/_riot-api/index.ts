@@ -1,7 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
-export const BASE_URL = "https://euw1.api.riotgames.com/";
-export const API_KEY = "RGAPI-97fbc4a8-1e5c-4ef2-9cb5-58e60491b292";
+export const getUrl = (domain:string, path: string) => {
+  return `https://${domain}.api.riotgames.com/${path}`;
+}
 
 export default class Request {
   public readonly targetURL: string;
@@ -20,7 +21,7 @@ export default class Request {
     this.axiosOptions = {
       ...axiosOptions,
       headers: {
-        "X-Riot-Token": API_KEY,
+        "X-Riot-Token": process.env.API_KEY,
       }
     };
     // requestDebug(`${chalk.italic(this.targetURL)} | ${chalk.bold.green('initialize')}`);

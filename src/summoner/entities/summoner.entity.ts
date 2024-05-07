@@ -3,17 +3,17 @@ import { ObjectType, Field, Int, ID } from '@nestjs/graphql';
 @ObjectType()
 export class Summoner {
   @Field(() => ID)
-  id: String;
+  id: string;
 
-  @Field(() => String)
-  accountId: String;
+  @Field(() => ID)
+  accountId: string;
 
-  @Field(() => String)
-  puuid: String;
+  @Field(() => ID)
+  puuid: string;
 
   @Field(() => Int)
   profileIconId: number;
 
   @Field(() => Int)
-  summonerLevel: 465;
+  summonerLevel: number;
 }
