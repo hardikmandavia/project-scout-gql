@@ -7,9 +7,9 @@ export class AccountResolver {
   constructor(private readonly accountService: AccountService) {}
 
   @Query(() => Account, { name: 'account' })
-  findOne(
+  get(
     @Args('name', { type: () => String }) name: string,
-    @Args('tag', { type: () => String }) tag: string
+    @Args('tag', { type: () => String }) tag: string,
   ) {
     return this.accountService.byRiotId(name, tag);
   }
