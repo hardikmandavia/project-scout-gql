@@ -8,9 +8,48 @@ type Account {
   tagLine: String!
 }
 
+type Banned {
+  championId: Int!
+  pickTurn: Int!
+  teamId: Int!
+}
+
+type Participant {
+  bot: Boolean!
+  championId: Int!
+  persk: Perks!
+  profileIconId: Int!
+  puuid: ID!
+  riotId: String!
+  spell1Id: Int!
+  spell2Id: Int!
+  summonerId: ID!
+  teamId: Int!
+}
+
+type Perks {
+  perkIds: [Int!]!
+  perkStyle: Int!
+  perkSubStyle: Int!
+}
+
 type Query {
   account(name: String!, tag: String!): Account!
+  spectator(puuid: ID!): Spectator!
   summoner(puuid: ID!): Summoner!
+}
+
+type Spectator {
+  bannedChampions: [Banned!]!
+  gameId: Float!
+  gameLength: Int!
+  gameMode: String!
+  gameQueueConfigId: Int!
+  gameStartTime: Int!
+  gameType: String!
+  mapId: Int!
+  participants: [Participant!]!
+  platformId: String!
 }
 
 type Summoner {

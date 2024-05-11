@@ -1,6 +1,6 @@
 import { Resolver, Query, Args, ID  } from '@nestjs/graphql';
 import { SummonerService } from './summoner.service';
-import { Summoner } from './entities/summoner.entity';
+import { Summoner } from '../entities/summoner.entity';
 
 @Resolver(() => Summoner)
 export class SummonerResolver {
