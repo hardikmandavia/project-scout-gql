@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import { SummonerModule } from './summoner/summoner.module';
 import { AccountModule } from './account/account.module';
 import { SpectatorModule } from './spectator/spectator.module';
+import { MatchModule } from './match/match.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { SpectatorModule } from './spectator/spectator.module';
     SummonerModule,
     AccountModule,
     SpectatorModule,
+    MatchModule,
   ],
   controllers: [AppController],
   providers: [AppService],

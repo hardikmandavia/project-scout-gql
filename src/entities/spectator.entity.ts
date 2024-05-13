@@ -1,6 +1,6 @@
 import { ObjectType, Field, ID, Int, Float } from '@nestjs/graphql';
 
-import { Banned } from './banned.entity';
+import { Ban } from './ban.entity';
 import { Participant } from "./participant.entity";
 
 @ObjectType()
@@ -21,13 +21,13 @@ export class Spectator {
   gameQueueConfigId: number;
 
   @Field(() => [Participant])
-  participants: [Participant];
+  participants: Participant[];
 
   @Field(() => String)
   platformId: string;
 
-  @Field(() => [Banned])
-  bannedChampions: [Banned];
+  @Field(() => [Ban])
+  bannedChampions: Ban[];
 
   @Field(() => Int)
   gameStartTime: number;

@@ -8,19 +8,69 @@ type Account {
   tagLine: String!
 }
 
-type Banned {
+type Ban {
   championId: Int!
   pickTurn: Int!
+  teamId: Int
+}
+
+type Match {
+  info: MatchInfo!
+  metadata: MatchMetadata!
+}
+
+type MatchInfo {
+  endOfGameResult: String!
+  gameCreation: Float!
+  gameDuration: Int!
+  gameEndTimestamp: Float!
+  gameId: Float!
+  gameMode: String!
+  gameName: String!
+  participants: [MatchParticipant!]!
+  platformId: String!
+  queueId: Int!
+  teams: [Team!]!
+}
+
+type MatchMetadata {
+  dataVersion: String!
+  matchId: String!
+  participants: [String!]!
+}
+
+type MatchParticipant {
+  assists: Int!
+  bot: Boolean!
+  championId: Int!
+  championName: String!
+  deaths: Int!
+  kills: Int!
+  lane: String!
+  participantId: Int!
+  perks: Perks!
+  profileIconId: Int!
+  puuid: ID!
+  riotId: String
+  riotIdGameName: String!
+  riotIdTagline: String!
+  role: String!
+  spell1Id: Int!
+  spell2Id: Int!
+  summonerId: ID!
+  summonerName: String!
   teamId: Int!
+  teamPosition: String!
+  win: Boolean!
 }
 
 type Participant {
   bot: Boolean!
   championId: Int!
-  persk: Perks!
+  perks: Perks!
   profileIconId: Int!
   puuid: ID!
-  riotId: String!
+  riotId: String
   spell1Id: Int!
   spell2Id: Int!
   summonerId: ID!
@@ -35,12 +85,14 @@ type Perks {
 
 type Query {
   account(name: String!, tag: String!): Account!
+  match(id: ID!): Match!
+  matchIds(count: Int! = 5, puuid: ID!): [String!]!
   spectator(puuid: ID!): Spectator!
   summoner(puuid: ID!): Summoner!
 }
 
 type Spectator {
-  bannedChampions: [Banned!]!
+  bannedChampions: [Ban!]!
   gameId: Float!
   gameLength: Int!
   gameMode: String!
@@ -58,4 +110,10 @@ type Summoner {
   profileIconId: Int!
   puuid: ID!
   summonerLevel: Int!
+}
+
+type Team {
+  bans: [Ban!]!
+  teamId: Int!
+  win: Boolean!
 }
